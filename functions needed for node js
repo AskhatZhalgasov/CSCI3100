@@ -1,0 +1,14 @@
+functions that need user database:
+        create account
+        login (check if input username matches password)
+        forget password(send password to user's registered email.)
+
+function that need order database:
+        post order
+        delete order
+
+function that need Pizza database:
+        post Pizzas
+        add pizza(not needed for users)
+        delete pizza(not needed for users)
+
