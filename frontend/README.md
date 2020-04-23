@@ -1,10 +1,6 @@
 # Pizza ordering app
 
-## Launching
-Just use this command to launch the server
-```bash
-node server.js
-```
+
 ## Installation (from the source)
 
 Install the dependencies
