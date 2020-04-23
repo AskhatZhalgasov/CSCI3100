@@ -6,3 +6,6 @@ body {
   text-align: center;
   margin: auto;
 }
+a, a:visited {
+  color: inherit;
+}
