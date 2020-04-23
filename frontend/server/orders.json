@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "pizzas": [
+      {
+        "name": "Margherita",
+        "quantity": 1
+      },
+      {
+        "name": "Bufala",
+        "quantity": 2
+      }
+    ],
+    "status": "delivered"
+  },
+  {
+    "id": 2,
+    "pizzas": [
+      {
+        "name": "Diavola",
+        "quantity": 1
+      }
+    ],
+    "status": "preparing"
+  },
+  {
+    "id": 3,
+    "pizzas": [
+      {
+        "name": "Pizza Bianca",
+        "quantity": 5
+      }
+    ],
+    "status": "pending"
+  }
+]
