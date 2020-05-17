@@ -18,7 +18,8 @@ export default function App() {
     return(
         <Router>
       <div>                                       
-        <Switch>          
+        <Switch>
+          {/* Standard React router routes specification for all of our component*/}
           <Route path="/login" component={Login} />                    
           <Route path="/sign-up" component={SignUp} />                                  
           <Route path="/confirm" component={ConfirmOrder} />

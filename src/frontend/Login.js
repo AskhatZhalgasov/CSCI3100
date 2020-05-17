@@ -34,6 +34,7 @@ export default class Login extends Component {
     handleChange(event, type) {
         this.setState({[type]: event.target.value});
     }
+    //handleClose and handleClose2 are the helper events for the snackbars
     handleClose2 = (event, reason) => {
       if (reason === 'clickaway') {
         return;
@@ -62,7 +63,10 @@ export default class Login extends Component {
           if(res != "correct") {
               self.setState({snackBarOpen: "open"})
           } else {
+              //if logged in successfully, update the cookies accordingly             
               document.cookie = `username=${self.state.username};`
+              //and, depending on the previous page, either redirect to the order page
+              //or the "confirm order" page
               if(self.props.location.state.from) {
                 self.props.history.push("/confirm", {order: self.props.location.state.order})
               } else {

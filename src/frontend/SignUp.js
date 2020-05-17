@@ -28,6 +28,14 @@ export default class SignUp extends Component {
             alert('passwords do not match')
             return
         }
+        if(this.state.username.length == 0) {
+            alert('username cannot be empty')
+            return
+        }
+        if(this.state.password.length == 0) {
+          alert('password cannot be empty')
+          return
+        }
         event.preventDefault();  
         let self = this
         //let history = useHistory();       

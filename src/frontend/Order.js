@@ -57,7 +57,8 @@ export default class Order extends Component {
   addToShoppingCart(e, row) {
     if(this.state.order.filter(item => item.pizza.name == row.name).length == 0) {
       this.setState((state) =>({order: [...state.order, {pizza: row, qt: 1}]}))
-    } else {      
+    } else {   
+      //since we cannot update an array inside state directly, we use filter function   
       let items = this.state.order
       items.filter(item => item.pizza.name == row.name)[0].qt += 1
       this.setState({order: items})
@@ -73,6 +74,7 @@ export default class Order extends Component {
       <Paper elevation={3} style={styles.order_container}>
       <Typography variant="h4">Your shopping cart is:  {
         order.length == 0 ? (
+          //based on if the cart is empty or not, either display "empty" or the current shopping cart
           <span>empty</span>
         ) : (                    
           order.map(item => (
@@ -91,6 +93,7 @@ export default class Order extends Component {
   displayPrice = (row) => row.price + " HKD"
   handleConfirm(e) {
     e.preventDefault()
+    //if logged in, straight to the confirm; otherwise, to the log in page
     if(document.cookie.includes("username")) {
       this.props.history.push("/confirm", {order: this.state.order})
     } else {

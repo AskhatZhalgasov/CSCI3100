@@ -60,6 +60,8 @@ export default class Profile extends Component {
         var ca = decodedCookie.split(';');
         const username = ca[0].substring("username=".length, ca[0].length)
         const self = this
+        //we're using Promise.all to simultaneously fetch all the data of the current user that we need,
+        //i.e. address and order history
         Promise.all([
             fetch('/api/user-address', {
                 method: 'POST',

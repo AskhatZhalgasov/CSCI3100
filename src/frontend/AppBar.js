@@ -26,6 +26,7 @@ export default class PizzaAppBar extends Component {
           <Typography variant="h6" style={{flexGrow: 1}}>
                 {document.cookie.includes("username") ? <p><span>Welcome, </span> <span style={{textDecoration: "underline"}}><Link to="/profile">{username}</Link></span></p> : "Guest"}
           </Typography>
+          {/*If there is a user logged in (determined using cookies), display his username, otherwise display "Guest" */}
           {document.cookie.includes("username") ?
           <Button color="inherit" onClick={(e) => {document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); }); this.forceUpdate() }}>Log out</Button>
           :

@@ -22,6 +22,7 @@ app.post('/api/login', (req, res) => {
         console.log(body)
         const collection = client.db("pizza_nut").collection("users");
         collection.find().toArray().then(result => {
+            //search the collection for an item with the same username and password as in the request
             if(result.filter(x => x.username == body.username && x.password == body.password).length == 0) {
                 res.status(500).send("incorrect")
             } else {
@@ -36,6 +37,7 @@ app.post('/api/sign-up', (req, res) => {
     client.connect(err => {
         const collection = client.db("pizza_nut").collection("users");
         collection.find().toArray().then(result => {
+            //search if there exists a user with the username in the sign up request
             if(result.filter(x => x.username == body.username && x.password == body.password).length != 0) {
                 res.status(500).send("already exists")
             } else {
@@ -47,6 +49,7 @@ app.post('/api/sign-up', (req, res) => {
 })
 app.get('/api/pizzas', (req, res) => {
     fs.readFile(path.resolve(__dirname, "./server/pizzas.json"), 'utf8', (err,data) => {        
+        //read the sample pizza data
         if(err) {
             throw err;
         }        
@@ -55,6 +58,7 @@ app.get('/api/pizzas', (req, res) => {
 })
 app.get('/api/confirm', (req, res) => {
     fs.readFile(path.resolve(__dirname, "./server/order.json"), "utf8", (err, data) => {
+        //pretty much confirms every order
         if(err) {
             throw err;
         }
@@ -75,6 +79,8 @@ app.post('/api/order', (req, res) => {
     client.connect(err => {
         const collection = client.db("pizza_nut").collection("orders");  
         collection.find().toArray().then(result => {
+            //if the user order history is empty, create a one-element array
+            //otherwise, push the latest order to the existing array
             if(result.filter(x => x.username == body.username).length == 0) {
                 collection.insert({
                     username: body.username,

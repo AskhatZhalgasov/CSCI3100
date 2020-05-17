@@ -43,6 +43,7 @@ export default class ConfirmOrder extends Component {
     }
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
+    //get the current user username from the cookies
     const username = ca[0].substring("username=".length, ca[0].length)
     const self = this
     fetch('/api/order', {
@@ -51,6 +52,7 @@ export default class ConfirmOrder extends Component {
       body: JSON.stringify({username: username, order: this.props.location.state.order }),
     }).then(res => res.text())
     .then(res => { 
+    //change the order status to "completed"
       self.setState({completed: true, time: res})
     })
   }
